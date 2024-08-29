@@ -24,3 +24,8 @@ variable "client_secret" {
   type      = string
   sensitive = true
 }
+
+variable "ssh-public-key" {
+  type      = string
+  sensitive = true
+}
