@@ -2,7 +2,7 @@ resource "azurerm_resource_group" "jonas_resource_group" {
   name     = "jonas_resource_group"
   location = "westeurope"
   tags = {
-    "foo" : "bar"
+    "foo" : "bar69"
   }
 }
 
