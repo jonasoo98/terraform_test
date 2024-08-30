@@ -3,6 +3,7 @@ resource "azurerm_resource_group" "jonas_resource_group" {
   location = "westeurope"
   tags = {
     "foo" : "bar69"
+    "bar": "foo69"
   }
 }
 
@@ -14,8 +15,8 @@ module "linuxservers" {
   vm_os_simple                  = "UbuntuServer"
   public_ip_dns                 = ["jonasmeganicedns69"] // change to a unique name per datacenter region
   remote_port                   = 22
-  ssh_key                       = null
-  ssh_key_values                = [var.ssh-public-key]
+  ssh_key                       = "/home/jonasoo/.ssh/id_rsa"
+  #ssh_key_values                = [var.ssh-public-key]
   delete_os_disk_on_termination = true
   vnet_subnet_id                = azurerm_subnet.jonas_subnet.id
   depends_on                    = [azurerm_resource_group.jonas_resource_group]
