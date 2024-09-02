@@ -3,7 +3,7 @@ resource "azurerm_resource_group" "jonas_resource_group" {
   location = "westeurope"
   tags = {
     "foo" : "bar69"
-    "bar": "foo69"
+    "bar" : "foo69"
   }
 }
 
@@ -22,8 +22,16 @@ module "linuxservers" {
   depends_on                    = [azurerm_resource_group.jonas_resource_group]
 }
 
+locals {
+  vnet_name = "jonas_vnet"
+}
+
+output "vnet_name" {
+  value = local.vnet_name 
+}
+
 resource "azurerm_virtual_network" "jonas_vnet" {
-  name                = "jonas_vnet"
+  name                = local.vnet_name
   resource_group_name = "jonas_resource_group"
   address_space       = ["10.0.0.0/24"]
   location            = "westeurope"
